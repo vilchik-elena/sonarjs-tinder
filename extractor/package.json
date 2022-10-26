@@ -1,0 +1,13 @@
+{
+  "name": "sonarjs-tinder-extractor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "clear && time node --no-warnings --trace-warnings index.js"
+  },
+  "dependencies": {
+    "dotenv": "*"
+  }
+}

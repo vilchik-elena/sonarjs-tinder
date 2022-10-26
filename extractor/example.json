@@ -1,0 +1,95 @@
+{
+    "issues":
+    [
+        {
+            "rule": "javascript:S125",
+            "message": "Remove this commented out code.",
+            "component": "gabriel-vivas-sonarsource_adarkroom-game:script/audio.js",
+            "project": "gabriel-vivas-sonarsource_adarkroom-game",
+            "textRange":
+            {
+                "startLine": 15,
+                "endLine": 15,
+                "startOffset": 8,
+                "endOffset": 68
+            },
+            "key": "AYIcoKuzjAI4JyXJNGq8",
+            "url": "https://sonarcloud.io/project/issues?id=gabriel-vivas-sonarsource_adarkroom-game&open=AYIcoKuzjAI4JyXJNGq8"
+        },
+        {
+            "rule": "javascript:S125",
+            "message": "Remove this commented out code.",
+            "component": "gabriel-vivas-sonarsource_adarkroom-game:script/events.js",
+            "project": "gabriel-vivas-sonarsource_adarkroom-game",
+            "textRange":
+            {
+                "startLine": 571,
+                "endLine": 571,
+                "startOffset": 3,
+                "endOffset": 52
+            },
+            "key": "AYIcoKq_jAI4JyXJNGi0",
+            "url": "https://sonarcloud.io/project/issues?id=gabriel-vivas-sonarsource_adarkroom-game&open=AYIcoKq_jAI4JyXJNGi0"
+        },
+        {
+            "rule": "javascript:S125",
+            "message": "Remove this commented out code.",
+            "component": "gabriel-vivas-sonarsource_adarkroom-game:script/events.js",
+            "project": "gabriel-vivas-sonarsource_adarkroom-game",
+            "textRange":
+            {
+                "startLine": 533,
+                "endLine": 533,
+                "startOffset": 2,
+                "endOffset": 44
+            },
+            "key": "AYIcoKq-jAI4JyXJNGit",
+            "url": "https://sonarcloud.io/project/issues?id=gabriel-vivas-sonarsource_adarkroom-game&open=AYIcoKq-jAI4JyXJNGit"
+        },
+        {
+            "rule": "javascript:S125",
+            "message": "Remove this commented out code.",
+            "component": "gabriel-vivas-sonarsource_adobe-brackets:Gruntfile.js",
+            "project": "gabriel-vivas-sonarsource_adobe-brackets",
+            "textRange":
+            {
+                "startLine": 401,
+                "endLine": 402,
+                "startOffset": 4,
+                "endOffset": 70
+            },
+            "key": "AYOzebF3OLYFmZ1TWRsz",
+            "url": "https://sonarcloud.io/project/issues?id=gabriel-vivas-sonarsource_adobe-brackets&open=AYOzebF3OLYFmZ1TWRsz"
+        },
+        {
+            "rule": "javascript:S125",
+            "message": "Remove this commented out code.",
+            "component": "gabriel-vivas-sonarsource_adobe-brackets:src/JSUtils/node/TernNodeDomain.js",
+            "project": "gabriel-vivas-sonarsource_adobe-brackets",
+            "textRange":
+            {
+                "startLine": 369,
+                "endLine": 369,
+                "startOffset": 4,
+                "endOffset": 90
+            },
+            "key": "AYIcp87BA5RVItebV8_m",
+            "url": "https://sonarcloud.io/project/issues?id=gabriel-vivas-sonarsource_adobe-brackets&open=AYIcp87BA5RVItebV8_m"
+        },
+        {
+            "rule": "javascript:S125",
+            "message": "Remove this commented out code.",
+            "component": "gabriel-vivas-sonarsource_adobe-brackets:src/JSUtils/node/TernNodeDomain.js",
+            "project": "gabriel-vivas-sonarsource_adobe-brackets",
+            "textRange":
+            {
+                "startLine": 420,
+                "endLine": 420,
+                "startOffset": 4,
+                "endOffset": 74
+            },
+            "key": "AYIcp87BA5RVItebV8_t",
+            "url": "https://sonarcloud.io/project/issues?id=gabriel-vivas-sonarsource_adobe-brackets&open=AYIcp87BA5RVItebV8_t"
+        }
+    ]
+}
