@@ -1,58 +1,79 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-  import { getDatabase, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+  import {
+    getDatabase,
+    set,
+    ref,
+    onValue,
+  } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 
-const firebaseConfig = {
-  apiKey: window.API_KEY,
-  authDomain: "sonarjs-tinder.firebaseapp.com",
-  databaseURL: "https://sonarjs-tinder-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "sonarjs-tinder",
-  storageBucket: "sonarjs-tinder.appspot.com",
-  messagingSenderId: "166820050700",
-  appId: "1:166820050700:web:6a1ff6447ddac896db3b29"
-};
+  const firebaseConfig = {
+    apiKey: window.API_KEY,
+    authDomain: "sonarjs-tinder.firebaseapp.com",
+    databaseURL:
+      "https://sonarjs-tinder-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "sonarjs-tinder",
+    storageBucket: "sonarjs-tinder.appspot.com",
+    messagingSenderId: "166820050700",
+    appId: "1:166820050700:web:6a1ff6447ddac896db3b29",
+  };
+
   const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+  const db = getDatabase(app);
 
-async function getIssues() {
-  return new Promise((resolve, reject) => {
-    const starCountRef = ref(db, 'issues/');
+  function loop(issues) {
+    const issueIndex = getIssueToQualifyIndex(issues);
+    console.log("issue to qualify");
+    console.log(issues[issueIndex]);
 
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      resolve(data)
+    window.truePositive = () => writeIssue(issueIndex, true, issues);
+    window.falsePositive = () => writeIssue(issueIndex, false, issues);
+
+    let issue = issues[issueIndex];
+
+    document.getElementById("main").innerHTML = `
+      <center>
+        <a href="${issue.url}">${issue.rule}: [${issue.message}] key=${issue.key}</a>
+      </center>
+
+      <ul>
+        <li><a href="javascript:window.truePositive()">True positive</a></li>
+        <li><a href="javascript:window.falsePositive()">False positive</a></li>
+      </ul>
+    `;
+  }
+
+  async function getIssues() {
+    return new Promise((resolve, reject) => {
+      const starCountRef = ref(db, "issues/");
+
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        resolve(data);
+      });
     });
-  });
-}
+  }
 
-function writeIssue(issue, qualification) {
-  set(ref(db, 'issues/' + 0), {
-    ...issue,
-    qualification
-  });
+  function getIssueToQualifyIndex(issues) {
+    let issueIndex = issues.findIndex(
+      (issue) => typeof issue.qualification !== "boolean"
+    );
+    return issueIndex == -1 ? 0 : issueIndex;
+  }
 
-  console.log("wrote value", qualification);
-}
+  function writeIssue(issueIndex, qualification, issues) {
+    issues[issueIndex].qualification = qualification;
+    set(ref(db, "issues/" + issueIndex), { ...issues[issueIndex] });
+    console.log("wrote value", qualification);
+    loop(issues);
+  }
 
-console.log("starting")
-const issues = await getIssues()
-console.log(`found ${issues.length} issues`)
-
-const issue = issues[0]
-console.log(issue)
-
-window.truePositive = () => writeIssue(issue, true);
-window.falsePositive = () => writeIssue(issue, false);
-
-document.write(`
-  <center>
-    <a href="${issue.url}">${issue.rule}: ${issue.message}</a>
-  </center>
-
-  <ul>
-    <li><a href="javascript:window.truePositive()">True positive</a></li>
-    <li><a href="javascript:window.falsePositive()">False positive</a></li>
-  </ul>
-`);
-
+  console.log("starting");
+  const issues = await getIssues();
+  console.log(`found ${issues.length} issues`);
+  loop(issues);
 </script>
+
+<body>
+  <div id="main"></div>
+</body>
