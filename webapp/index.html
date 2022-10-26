@@ -50,8 +50,8 @@
   </div>
 
   <ul>
-    <li class="cross"><a href="javascript:window.truePositive()"></a></li>
-    <li class="heart"><a href="javascript:window.falsePositive()"></a></li>
+    <li class="heart"><a href="javascript:window.truePositive()"></a></li>
+    <li class="cross"><a href="javascript:window.falsePositive()"></a></li>
   </ul>
 
     `;
@@ -80,6 +80,15 @@
     set(ref(db, "issues/" + issueIndex), { ...issues[issueIndex] });
     console.log("wrote value", qualification);
     loop(issues);
+    computeMetrics(issues);
+  }
+
+  function computeMetrics(issues) {
+    const issuesNumber = issues.length;
+    const issuesTP = issues.filter(issue => issue.qualification === true).length;
+    const issuesFP = issues.filter(issue => issue.qualification === false).length;
+
+    console.log(`${issuesNumber} issues, ${issuesTP + issuesFP} qualified, ${(issuesFP/(issuesTP + issuesFP)).toFixed(2)} FP rate`);
   }
 
   console.log("starting");
