@@ -16,8 +16,6 @@ const firebaseConfig = {
 
 async function getIssues() {
   return new Promise((resolve, reject) => {
-
-  
     const starCountRef = ref(db, 'issues/');
 
     onValue(starCountRef, (snapshot) => {
@@ -27,11 +25,13 @@ async function getIssues() {
   });
 }
 
-async function writeIssue(issue, qualification) {
-  return set(ref(db, 'issues/' + 0), {
+function writeIssue(issue, qualification) {
+  set(ref(db, 'issues/' + 0), {
     ...issue,
     qualification
   });
+
+  console.log("wrote value", qualification);
 }
 
 console.log("starting")
@@ -41,9 +41,18 @@ console.log(`found ${issues.length} issues`)
 const issue = issues[0]
 console.log(issue)
 
-console.log("writing")
-const res = await writeIssue(issue, true)
-console.log(res)
+window.truePositive = () => writeIssue(issue, true);
+window.falsePositive = () => writeIssue(issue, false);
 
+document.write(`
+  <center>
+    <a href="${issue.url}">${issue.rule}: ${issue.message}</a>
+  </center>
+
+  <ul>
+    <li><a href="javascript:window.truePositive()">True positive</a></li>
+    <li><a href="javascript:window.falsePositive()">False positive</a></li>
+  </ul>
+`);
 
 </script>
