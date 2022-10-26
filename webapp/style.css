@@ -1,0 +1,54 @@
+
+  html {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  header img {
+    margin: 0 auto;
+    max-width: 30vh;
+    display: block;
+  }
+
+  header .intro {
+    margin: 0 auto;
+    max-width: 80%;
+  }
+
+  section {
+    font-weight: bold;
+    padding: 3em;
+  }
+
+  section a {
+    color: black;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 2em;
+    display: inline-block;
+  }
+
+  li a {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .heart a {
+    background-image: url(heart.png);
+  }
+
+  .cross a {
+    background-image: url(cross.png);
+  }
