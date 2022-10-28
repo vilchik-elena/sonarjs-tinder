@@ -16,7 +16,7 @@ async function main() {
   let issues = await sample_issues(api, rule);
 
   // log(JSON.stringify({ issues }));
-  log(issues);
+  log("examples:", issues.slice(0, 2));
 }
 
 main();

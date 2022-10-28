@@ -5,7 +5,7 @@ export async function sample_issues(api, rule) {
   let projects = await api.projects();
 
   for (let { key, name } of projects) {
-    // log("project", name)
+    log("project", name)
 
     let entries = await api.issues(key, rule);
 
@@ -21,6 +21,9 @@ export async function sample_issues(api, rule) {
 
     issues.push(...entries);
   }
+
+  log(`found ${projects.length} projects`)
+  log(`extracted ${issues.length} issues`)
 
   return issues;
 }
