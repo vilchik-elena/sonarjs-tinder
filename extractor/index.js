@@ -3,7 +3,9 @@ import "dotenv/config";
 import { make_api } from "./api.js";
 import { sample_issues } from "./sampling.js";
 
-const { log } = console;
+// small hack to avoid using stdout,
+// so the script is able to pipe its output
+const { error: log, log: output } = console;
 
 async function main() {
   const { TOKEN } = process.env;
@@ -15,8 +17,8 @@ async function main() {
 
   let issues = await sample_issues(api, rule);
 
-  // log(JSON.stringify({ issues }));
-  log("examples:", issues.slice(0, 2));
+  log("examples:", issues.slice(0, 1));
+  output(JSON.stringify({ issues }));
 }
 
 main();
