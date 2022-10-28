@@ -7,7 +7,7 @@
 
   header img {
     margin: 0 auto;
-    max-width: 30vh;
+    max-width: 20vh;
     display: block;
   }
 
@@ -17,12 +17,28 @@
   }
 
   section {
-    font-weight: bold;
-    padding: 3em;
+    padding: 1em 2em;
   }
 
   section a {
+    font-weight: bold;
     color: black;
+  }
+
+  code {
+    display: block;
+    max-width: 50%;
+    max-height: 30em;
+    margin: 0 auto;
+    overflow: scroll;
+    padding: 1em 2em;
+    font-family: monospace;
+    text-align: left;
+    font-weight: normal;
+    white-space: pre;
+    background-color: #222;
+    color: #eee;
+    border-radius: 0.5em;
   }
 
   ul {

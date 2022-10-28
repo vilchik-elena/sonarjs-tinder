@@ -47,6 +47,7 @@
       <p class="rule">${issue.rule}</p>
       <p class="label">"${issue.message}"</p>
     </a>
+    ${issue.source ? `<code>${issue.source}</code>` : ""}
   </div>
 
   <ul>
